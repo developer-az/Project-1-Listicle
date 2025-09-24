@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Tech Innovations of 2024</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="stylesheet" href="styles.css?v=1.0.2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>🚀 Tech Innovations 2024</strong></li>
+        </ul>
+        <ul>
+            <li><button onclick="scrollToSection('featured')" class="nav-button">⭐ Featured</button></li>
+            <li><button onclick="scrollToSection('all')" class="nav-button">📋 All Items</button></li>
+            <li><button onclick="scrollToSection('about')" class="nav-button">ℹ️ About</button></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Top 10 Tech Innovations of 2024</h1>
+            <p class="hero-subtitle">Discover the groundbreaking technologies that are reshaping our world</p>
+        </header>
+
+        <section class="controls">
+            <h3>🔍 Search & Filter</h3>
+            <div class="grid">
+                <div class="search-container">
+                    <label for="searchInput">Search innovations:</label>
+                    <input type="search" id="searchInput" placeholder="Type to search..." aria-label="Search innovations">
+                </div>
+                <div class="filter-container">
+                    <label for="categoryFilter">Filter by category:</label>
+                    <select id="categoryFilter" aria-label="Filter by category">
+                        <option value="">All Categories</option>
+                        <option value="Artificial Intelligence">🤖 AI</option>
+                        <option value="Augmented Reality">🥽 AR/VR</option>
+                        <option value="Robotics">🤖 Robotics</option>
+                        <option value="Biotechnology">🧬 Biotech</option>
+                        <option value="Virtual Reality">🥽 VR</option>
+                        <option value="Quantum Computing">⚛️ Quantum</option>
+                        <option value="Transportation">🚗 Transportation</option>
+                        <option value="Space Technology">🚀 Space</option>
+                    </select>
+                </div>
+                <div class="sort-container">
+                    <label for="sortFilter">Sort by:</label>
+                    <select id="sortFilter" aria-label="Sort by">
+                        <option value="rating">⭐ Rating (High to Low)</option>
+                        <option value="title">📝 Title (A to Z)</option>
+                        <option value="year">📅 Year (Newest)</option>
+                        <option value="company">🏢 Company (A to Z)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="button-group">
+                <button onclick="clearFilters()" class="btn-secondary">🗑️ Clear Filters</button>
+                <button onclick="showAllFeatured()" class="btn-primary">⭐ Show Featured Only</button>
+            </div>
+        </section>
+
+        <section id="featured" class="featured-section">
+            <h2>🌟 Featured Innovations</h2>
+            <div id="featuredGrid" class="grid featured-grid">
+                <!-- Featured innovations will be loaded here -->
+            </div>
+        </section>
+
+        <section id="all" class="all-innovations">
+            <h2>📋 All Innovations</h2>
+            <div id="loadingMessage" class="loading">
+                <p>Loading innovations...</p>
+            </div>
+            <div id="innovationsList" class="innovations-container">
+                <!-- All innovations will be loaded here -->
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About This Project</h2>
+            <div class="grid">
+                <div>
+                    <h3>🎯 Mission</h3>
+                    <p>This listicle showcases the most impactful technological innovations of 2024, highlighting breakthroughs that are shaping our future.</p>
+                </div>
+                <div>
+                    <h3>📊 Methodology</h3>
+                    <p>Innovations are rated based on their potential impact, technological advancement, and real-world applicability.</p>
+                </div>
+                <div>
+                    <h3>🔄 Updates</h3>
+                    <p>This list is regularly updated to reflect the latest developments in technology and innovation.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container-fluid">
+        <div class="container">
+            <p>Built with ❤️ using vanilla HTML, CSS, JavaScript, and PicoCSS</p>
+        </div>
+    </footer>
+
+    <!-- Innovation Modal -->
+    <dialog id="innovationModal">
+        <article>
+            <header>
+                <h3 id="modalTitle"></h3>
+                <button aria-label="Close" rel="prev" onclick="closeModal()"></button>
+            </header>
+            <div id="modalContent">
+                <!-- Modal content will be populated here -->
+            </div>
+        </article>
+    </dialog>
+
+    <script src="script.js?v=1.0.2"></script>
+</body>
+</html>
