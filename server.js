@@ -53,6 +53,23 @@ app.get('/api/innovations/category/:category', (req, res) => {
   res.json(filtered);
 });
 
+// Individual innovation detail pages
+app.get('/innovations/:id', (req, res) => {
+  const innovations = getInnovationsData();
+  const innovation = innovations.find(item => item.id === parseInt(req.params.id));
+  
+  if (!innovation) {
+    return res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  }
+  
+  res.sendFile(path.join(__dirname, 'public', 'detail.html'));
+});
+
+// 404 handler for undefined routes
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);

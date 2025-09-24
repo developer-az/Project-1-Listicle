@@ -127,7 +127,7 @@ class TechInnovationsApp {
         const featuredInnovations = this.innovations.filter(innovation => innovation.featured);
         
         featuredGrid.innerHTML = featuredInnovations.map(innovation => `
-            <div class="featured-card fade-in-up" onclick="app.openModal(${innovation.id})">
+            <div class="featured-card fade-in-up" onclick="app.openInnovationDetail(${innovation.id})">
                 <h3>${innovation.title}</h3>
                 <p>${innovation.description}</p>
                 <div class="innovation-meta">
@@ -156,7 +156,7 @@ class TechInnovationsApp {
         innovationsList.innerHTML = this.filteredInnovations.map((innovation, index) => `
             <div class="innovation-card fade-in-up ${innovation.featured ? 'featured' : ''}" 
                  style="animation-delay: ${index * 0.1}s"
-                 onclick="app.openModal(${innovation.id})">
+                 onclick="app.openInnovationDetail(${innovation.id})">
                 <div class="innovation-header">
                     <h3 class="innovation-title">${innovation.title}</h3>
                     <div class="innovation-rating">
@@ -176,72 +176,11 @@ class TechInnovationsApp {
         `).join('');
     }
 
-    async openModal(innovationId) {
-        try {
-            const response = await fetch(`/api/innovations/${innovationId}`);
-            const innovation = await response.json();
-            
-            this.showModal(innovation);
-        } catch (error) {
-            console.error('Error loading innovation details:', error);
-            this.showError('Failed to load innovation details.');
-        }
+    openInnovationDetail(innovationId) {
+        // Navigate to the unique endpoint for this innovation
+        window.location.href = `/innovations/${innovationId}`;
     }
 
-    showModal(innovation) {
-        const modal = document.getElementById('innovationModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalContent = document.getElementById('modalContent');
-        
-        modalTitle.textContent = innovation.title;
-        modalContent.innerHTML = `
-            <div class="modal-info-section">
-                <h4>📝 Description</h4>
-                <p class="modal-description">${innovation.description}</p>
-            </div>
-            
-            <div class="modal-info-section">
-                <h4>🎯 Impact</h4>
-                <p class="modal-impact">${innovation.impact}</p>
-            </div>
-            
-            <div class="modal-details">
-                <div class="detail-item">
-                    <label>🏢 Company:</label>
-                    <span class="detail-value">${innovation.company}</span>
-                </div>
-                <div class="detail-item">
-                    <label>📂 Category:</label>
-                    <span class="detail-value">${innovation.category}</span>
-                </div>
-                <div class="detail-item">
-                    <label>📅 Year:</label>
-                    <span class="detail-value">${innovation.year}</span>
-                </div>
-                <div class="detail-item">
-                    <label>⭐ Rating:</label>
-                    <span class="detail-value rating-highlight">${innovation.rating}/10</span>
-                </div>
-            </div>
-            
-            <div class="modal-info-section">
-                <h4>🏷️ Tags</h4>
-                <div class="modal-tags">
-                    ${innovation.tags.map(tag => `<span class="modal-tag">${tag}</span>`).join('')}
-                </div>
-            </div>
-            
-            ${innovation.featured ? '<div class="featured-indicator">🌟 Featured Innovation</div>' : ''}
-            
-            <div class="modal-actions">
-                <button onclick="closeModal()" class="btn-primary">✅ Close</button>
-                <button onclick="shareInnovation()" class="btn-secondary">📤 Share</button>
-                ${innovation.featured ? '<button onclick="scrollToSection(\'featured\')" class="btn-info">⭐ View Featured</button>' : ''}
-            </div>
-        `;
-        
-        modal.showModal();
-    }
 
     hideLoading() {
         const loadingMessage = document.getElementById('loadingMessage');
@@ -271,11 +210,7 @@ class TechInnovationsApp {
     }
 }
 
-// Global functions for modal handling and navigation
-function closeModal() {
-    const modal = document.getElementById('innovationModal');
-    modal.close();
-}
+// Global functions for navigation
 
 function scrollToSection(sectionId) {
     const targetElement = document.getElementById(sectionId);
@@ -379,9 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Add keyboard navigation support
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
+    // Add any keyboard shortcuts here if needed
 });
 
 // Simple mobile support
