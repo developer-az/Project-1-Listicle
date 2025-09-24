@@ -34,7 +34,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='web1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<a href="https://imgur.com/ySlfWM1" target="_blank">
+  <img src='web1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+</a>
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with screentogif
