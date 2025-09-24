@@ -42,7 +42,7 @@ class InnovationDetailPage {
         const loadingMessage = document.getElementById('loadingMessage');
         
         // Update page title
-        document.title = `${innovation.title} - Tech Innovations 2024`;
+        document.title = `${innovation.title} - Tech Innovations`;
         
         detailsContainer.innerHTML = `
             <header class="hero" style="text-align: center; padding: 2rem 0; margin-bottom: 2rem;">
@@ -110,7 +110,7 @@ class InnovationDetailPage {
 function shareInnovation() {
     if (navigator.share) {
         navigator.share({
-            title: 'Tech Innovations 2024',
+            title: 'Tech Innovations',
             text: 'Check out this amazing tech innovation!',
             url: window.location.href
         });

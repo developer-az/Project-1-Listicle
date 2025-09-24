@@ -253,7 +253,7 @@ function showAllFeatured() {
 function shareInnovation() {
     if (navigator.share) {
         navigator.share({
-            title: 'Tech Innovations 2024',
+            title: 'Tech Innovations',
             text: 'Check out this amazing tech innovation!',
             url: window.location.href
         });

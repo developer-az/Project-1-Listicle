@@ -1,7 +1,7 @@
 {
   "name": "tech-innovations-listicle",
   "version": "1.0.0",
-  "description": "A list-based web app showcasing top tech innovations of 2024",
+  "description": "A list-based web app showcasing top tech innovations",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

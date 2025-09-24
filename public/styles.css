@@ -343,6 +343,7 @@ main {
 
 /* About Section */
 .about-section {
+  color: #000000;
   margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border-color);
